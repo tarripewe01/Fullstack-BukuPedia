@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   MDBBtn,
   MDBCard,
@@ -9,11 +8,12 @@ import {
   MDBSpinner,
   MDBValidation,
 } from "mdb-react-ui-kit";
-import { Link, useNavigate } from "react-router-dom";
-import { Colors } from "../utils/colors";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../redux/features/authSlice";
+import { Colors } from "../utils/colors";
 
 const initialState = {
   email: "",
