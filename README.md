@@ -19,8 +19,8 @@ Team 3:
 
 2. Client :
 
-   - [] Redux Toolkit
-   - [] Login
+   - [x] Redux Toolkit
+   - [x] Login
    - [] Register
    - [] Dashboard Admin
    - [] Home Page
