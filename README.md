@@ -5,9 +5,9 @@ Assignment
 1. Server :
 
    - [x] Setup Database using MongoDB
-   - [] Implement Database using MongoDB
-   - [] Authentication and Authorization using JWT as Middleware
-   - [] Hash password
+   - [x] Implement Database using MongoDB
+   - [x] Authentication and Authorization using JWT as Middleware
+   - [x] Hash password
    - [] HTTP protocol method GET
    - [] HTTP protocol method POST
    - [] HTTP protocol method PUT
