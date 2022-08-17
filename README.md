@@ -1,6 +1,9 @@
-# Fullstack-BukuPedia
+# Assignment
 
-Assignment
+Team 3:
+
+-👩🏻 Tarri Peritha Westi
+-🧑🏻 Achmad Setyo Aldi
 
 1. Server :
 
