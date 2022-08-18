@@ -10,6 +10,10 @@ code {
     monospace;
 }
 
+.app{
+  text-align: center;
+}
+
 .header-text{
   color: rgb(235, 228, 228);
   font-weight: 500;

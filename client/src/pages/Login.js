@@ -44,7 +44,6 @@ const Login = () => {
     let { name, value } = e.target;
     setFormValue({ ...formValue, [name]: value });
   };
-
   return (
     <>
       <div style={styles.container}>
@@ -120,7 +119,7 @@ export default Login;
 const styles = {
   container: {
     margin: "auto",
-    padding: "px",
+    padding: "15px",
     maxWidth: "450px",
     alignContent: "center",
     marginTop: "240px",

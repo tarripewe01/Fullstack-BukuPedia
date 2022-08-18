@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Header } from "./components";
-import { Home, Login, Register } from "./pages";
+import { Home, Login, Register, AddEditBook } from "./pages";
 import { setUser } from "./redux/features/authSlice";
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -19,13 +21,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div>
+      <div className="app">
         <Header />
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/addBook" element={<AddEditBook />} />
+          <Route path="/editBook/:id" element={<AddEditBook />} />
         </Routes>
       </div>
     </BrowserRouter>

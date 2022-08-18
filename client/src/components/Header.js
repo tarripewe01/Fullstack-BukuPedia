@@ -45,7 +45,7 @@ const Header = () => {
                 <p className="header-text">Home</p>
               </MDBNavbarLink>
             </MDBNavbarItem>
-            {user?.result?._id && (
+            {user?.result?.name ==='Admin' && (
               <>
                 <MDBNavbarItem>
                   <MDBNavbarLink href="/addBook">
