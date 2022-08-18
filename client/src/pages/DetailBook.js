@@ -1,14 +1,8 @@
+import { MDBCardImage, MDBCol, MDBContainer } from "mdb-react-ui-kit";
+import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  MDBCardImage,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBTypography,
-} from "mdb-react-ui-kit";
 import { useParams } from "react-router-dom";
-import moment from "moment";
 import { getBook } from "../redux/features/bookSlice";
 
 const DetailBook = () => {

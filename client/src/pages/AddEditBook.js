@@ -15,7 +15,6 @@ const initialState = {
   tags: [],
   author: "",
   publisher: "",
-  isbn: "",
 };
 
 const AddEditBook = () => {
@@ -34,7 +33,7 @@ const AddEditBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && description && tags && author && publisher && isbn) {
+    if (title && description && tags && author && publisher) {
       const updatedBookData = { ...bookData, nama: user?.result?.name };
 
       dispatch(createBook({ updatedBookData, navigate, toast }));
@@ -65,7 +64,6 @@ const AddEditBook = () => {
       tags: [],
       author: "",
       publisher: "",
-      isbn: "",
     });
   };
 
@@ -148,7 +146,7 @@ const AddEditBook = () => {
                 validation="Please provide publisher"
               />
             </div>
-            <div className="col-md-12 mb-2">
+            {/* <div className="col-md-12 mb-2">
               <input
                 placeholder="Enter ISBN"
                 type="isbn"
@@ -160,7 +158,7 @@ const AddEditBook = () => {
                 invalid={true}
                 validation="Please provide ISBN"
               />
-            </div>
+            </div> */}
             <div className="col-12">
               <MDBBtn
                 style={{ width: "100%", backgroundColor: Colors.primary }}
