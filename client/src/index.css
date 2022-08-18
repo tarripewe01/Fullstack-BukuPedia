@@ -9,3 +9,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.header-text{
+  color: rgb(235, 228, 228);
+  font-weight: 500;
+  margin-top: 7px;
+  font-size: 17px;
+}
