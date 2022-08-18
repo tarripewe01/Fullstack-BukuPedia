@@ -23,10 +23,11 @@ Team 3:
    - [x] Login
    - [x] Register
    - [] Dashboard Admin
-   - [] Home Page
+   - [x] Home Page
    - [] Detail Page
    - [] Payment Page
    - [] Profile Page
+   - [x] Add Page
    - [] Review Feature
    - [] Live Chat Feature
 

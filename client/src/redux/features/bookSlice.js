@@ -16,6 +16,18 @@ export const createBook = createAsyncThunk(
   }
 );
 
+export const getBooks = createAsyncThunk(
+  "book/getBooks",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.getBooks();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const bookSlice = createSlice({
   name: "book",
   initialState: {
@@ -43,6 +55,17 @@ const bookSlice = createSlice({
       state.books = [action.payload];
     },
     [createBook.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [getBooks.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getBooks.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.books = action.payload;
+    },
+    [getBooks.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

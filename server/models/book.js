@@ -5,10 +5,8 @@ const bookSchema = mongoose.Schema({
   description: String,
   author: String,
   imageFile: String,
-  tanggal_terbit: Date,
-  penerbit: String,
+  publisher: String,
   tags: [String],
-  jumlah_halaman: Number,
   ISBN: Number,
   createdAt: {
     type: Date,
