@@ -9,7 +9,6 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { books, loading } = useSelector((state) => ({ ...state.book }));
-  console.log(books)
 
   useEffect(() => {
     dispatch(getBooks());

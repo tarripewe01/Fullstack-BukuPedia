@@ -24,7 +24,7 @@ Team 3:
    - [x] Register
    - [] Dashboard Admin
    - [x] Home Page
-   - [] Detail Page
+   - [x] Detail Page
    - [] Payment Page
    - [] Profile Page
    - [x] Add Page

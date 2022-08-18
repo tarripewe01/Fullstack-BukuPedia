@@ -5,9 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Header } from "./components";
-import { Home, Login, Register, AddEditBook } from "./pages";
+import { Home, Login, Register, AddEditBook, DetailBook } from "./pages";
 import { setUser } from "./redux/features/authSlice";
-import './index.css'
+import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +30,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/addBook" element={<AddEditBook />} />
           <Route path="/editBook/:id" element={<AddEditBook />} />
+          <Route path="/book/:id" element={<DetailBook />} />
         </Routes>
       </div>
     </BrowserRouter>
