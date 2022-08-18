@@ -11,12 +11,18 @@ import {
   MDBNavbarBrand,
 } from "mdb-react-ui-kit";
 import { Colors } from "../utils/colors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setLogout } from "../redux/features/authSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
   const { user } = useSelector((state) => ({ ...state.auth }));
 
+  const handleLogout = () => {
+    dispatch(setLogout());
+  };
   return (
     <MDBNavbar fixed="top" expand="lg" style={styles.header}>
       <MDBContainer>
@@ -53,10 +59,15 @@ const Header = () => {
                 </MDBNavbarItem>
               </>
             )}
+            {user?.result?._id && (
+              <h5 style={styles.navbar}>Hi, {user?.result?.name}</h5>
+            )}
             {user?.result?._id ? (
               <MDBNavbarItem>
                 <MDBNavbarLink href="/login">
-                  <p className="header-text">Logout</p>
+                  <p className="header-text" onClick={handleLogout}>
+                    Logout
+                  </p>
                 </MDBNavbarLink>
               </MDBNavbarItem>
             ) : (
@@ -83,5 +94,13 @@ const styles = {
     color: Colors.white,
     fontWeight: "600",
     fontSize: 22,
+  },
+  navbar: {
+    color: "rgb(235, 228, 228)",
+    fontWeight: 500,
+    fontSize: 17,
+    marginRight: 20,
+    marginTop: 17,
+    marginLeft: 20,
   },
 };
