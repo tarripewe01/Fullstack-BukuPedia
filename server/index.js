@@ -1,10 +1,11 @@
 const express = require("express");
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config();
 
 const userRouter = require("./routes/user");
+const bookRouter = require("./routes/book");
 
 const app = express();
 const port = process.env.PORT;
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 // API
 app.use("/users", userRouter);
+app.use("/book", bookRouter);
 
 // Connect Monggo.DB
 mongoose

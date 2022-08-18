@@ -11,8 +11,8 @@ Team 3:
    - [x] Implement Database using MongoDB
    - [x] Authentication and Authorization using JWT as Middleware
    - [x] Hash password
-   - [] HTTP protocol method GET
-   - [] HTTP protocol method POST
+   - [X] HTTP protocol method GET
+   - [x] HTTP protocol method POST
    - [] HTTP protocol method PUT
    - [] HTTP protocol method DELETE
    - [] Add a real-time feature using Websocket
