@@ -60,7 +60,7 @@ const deleteBook = async (req, res) => {
 
   try {
     await BookModel.findByIdAndRemove(id);
-    res.json({ message: "Tour Deleted Successfulyy" });
+    res.json({ message: "Book Deleted Successfulyy" });
   } catch (error) {
     res.status(404).json({ message: "Something went wrong" });
   }

@@ -15,5 +15,7 @@ export const signIn = (formData) => API.post("/users/signin", formData);
 export const signUp = (formData) => API.post("/users/signup", formData);
 
 export const getBooks = () => API.get("/book");
-export const getBook = (id) => API.get(`/book/${id}`);
 export const createBook = (bookData) => API.post("/book", bookData);
+export const getBook = (id) => API.get(`/book/${id}`);
+export const updateBook = (id) => API.patch(`/book/${id}`);
+export const deleteBook = (id) => API.delete(`/book/${id}`);

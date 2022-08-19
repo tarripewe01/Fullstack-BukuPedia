@@ -1,18 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
-    MDBBtn, MDBCol, MDBRow, MDBTable,
-    MDBTableBody,
-    MDBTableHead
+  MDBBtn,
+  MDBCol,
+  MDBRow,
+  MDBTable,
+  MDBTableBody,
+  MDBTableHead,
 } from "mdb-react-ui-kit";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getBooks } from "../redux/features/bookSlice";
+import { deletedBook, getBooks } from "../redux/features/bookSlice";
 import { Colors } from "../utils/colors";
+import { toast } from "react-toastify";
 
 const BookManage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { books } = useSelector((state) => ({ ...state.book }));
 
@@ -21,8 +25,13 @@ const BookManage = () => {
   }, []);
 
   const handleEdit = () => {
-    navigate('/addBook')
-  }
+    navigate("/addBook");
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure want to delete this book ?"))
+      dispatch(deletedBook({ id, toast }));
+  };
 
   const excerpt = (str) => {
     if (str.length > 85) {
@@ -71,7 +80,10 @@ const BookManage = () => {
                           </MDBBtn>
                         </MDBCol>
                         <MDBCol>
-                          <MDBBtn style={{ backgroundColor: Colors.danger }}>
+                          <MDBBtn
+                            onClick={() => handleDelete(book._id)}
+                            style={{ backgroundColor: Colors.danger }}
+                          >
                             DELETE
                           </MDBBtn>
                         </MDBCol>

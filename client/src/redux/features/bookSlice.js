@@ -40,6 +40,33 @@ export const getBook = createAsyncThunk(
   }
 );
 
+export const deletedBook = createAsyncThunk(
+  "book/deletedBook",
+  async ({ id, toast }, { rejectWithValue }) => {
+    try {
+      const response = await api.deleteBook(id);
+      toast.success("Book Deleted Succesfully");
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const updatedBook = createAsyncThunk(
+  "book/updatedBook",
+  async ({ id, toast, updatedBookData, navigate }, { rejectWithValue }) => {
+    try {
+      const response = await api.updateBook(updatedBookData, id);
+      toast.success("Book Updated Succesfully");
+      navigate("/");
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const bookSlice = createSlice({
   name: "book",
   initialState: {
@@ -49,15 +76,6 @@ const bookSlice = createSlice({
     error: "",
     loading: false,
   },
-  // reducers: {
-  //   setUser: (state, action) => {
-  //     state.user = action.payload;
-  //   },
-  //   setLogout: (state, action) => {
-  //     state.user = null;
-  //     localStorage.clear();
-  //   },
-  // },
   extraReducers: {
     [createBook.pending]: (state, action) => {
       state.loading = true;
@@ -89,6 +107,22 @@ const bookSlice = createSlice({
       state.book = action.payload;
     },
     [getBook.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [deletedBook.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deletedBook.fulfilled]: (state, action) => {
+      state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.books = state.books.filter((item) => item._id !== id);
+      }
+    },
+    [deletedBook.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },
