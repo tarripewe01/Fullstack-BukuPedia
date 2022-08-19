@@ -13,8 +13,8 @@ Team 3:
    - [x] Hash password
    - [X] HTTP protocol method GET
    - [x] HTTP protocol method POST
-   - [] HTTP protocol method PUT
-   - [] HTTP protocol method DELETE
+   - [x] HTTP protocol method PUT
+   - [x] HTTP protocol method DELETE
    - [] Add a real-time feature using Websocket
 
 2. Client :

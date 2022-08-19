@@ -34,4 +34,36 @@ const getBook = async (req, res) => {
   }
 };
 
-module.exports = { createBook, getBooks, getBook };
+const updateBook = async (req, res) => {
+  const { id } = req.params;
+  const { imageFile, title, description, tags, author, publisher } = req.body;
+  try {
+    const updatedBook = {
+      imageFile,
+      title,
+      description,
+      tags,
+      author,
+      publisher,
+      _id: id,
+    };
+
+    await BookModel.findByIdAndUpdate(id, updatedBook, { new: true });
+    res.json(updatedBook);
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+const deleteBook = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await BookModel.findByIdAndRemove(id);
+    res.json({ message: "Tour Deleted Successfulyy" });
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+module.exports = { createBook, getBooks, getBook, updateBook, deleteBook };
