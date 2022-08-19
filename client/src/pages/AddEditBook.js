@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { MDBBtn, MDBCard, MDBCardBody, MDBValidation } from "mdb-react-ui-kit";
-import React, { useState, useEffect } from "react";
 import ChipInput from "material-ui-chip-input";
+import { MDBBtn, MDBCard, MDBCardBody, MDBValidation } from "mdb-react-ui-kit";
+import React, { useEffect, useState } from "react";
 import FileBase from "react-file-base64";
-import { Colors } from "../utils/colors";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { createBook } from "../redux/features/bookSlice";
+import { createBook, updatedBook } from "../redux/features/bookSlice";
+import { Colors } from "../utils/colors";
 
 const initialState = {
   title: "",
@@ -20,12 +20,20 @@ const initialState = {
 const AddEditBook = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const [bookData, setBooksData] = useState(initialState);
-  const { title, description, tags, author, publisher, isbn } = bookData;
+  const { title, description, tags, author, publisher } = bookData;
 
-  const { error, loading } = useSelector((state) => ({ ...state.book }));
+  const { error, loading, books } = useSelector((state) => ({ ...state.book }));
   const { user } = useSelector((state) => ({ ...state.auth }));
+
+  useEffect(() => {
+    if (id) {
+      const onlyBook = books.find((book) => book._id === id);
+      setBooksData({ ...onlyBook });
+    }
+  }, [books, id]);
 
   useEffect(() => {
     error && toast.error(error);
@@ -36,7 +44,11 @@ const AddEditBook = () => {
     if (title && description && tags && author && publisher) {
       const updatedBookData = { ...bookData, nama: user?.result?.name };
 
-      dispatch(createBook({ updatedBookData, navigate, toast }));
+      if (!id) {
+        dispatch(createBook({ updatedBookData, navigate, toast }));
+      } else {
+        dispatch(updatedBook({ id, toast, updatedBookData, navigate }));
+      }
       handleClear();
     }
   };
@@ -70,7 +82,9 @@ const AddEditBook = () => {
   return (
     <div className="container" style={styles.container}>
       <MDBCard>
-        <h4 style={{ marginTop: 30 }}>Add New Book</h4>
+        <h4 style={{ marginTop: 30 }}>
+          {id ? "Update a Book" : "Add New Book"}
+        </h4>
         <MDBCardBody>
           <MDBValidation onSubmit={handleSubmit} className="row g-3" noValidate>
             <div className="d-flex justify-content-start mb-2">
@@ -163,7 +177,7 @@ const AddEditBook = () => {
               <MDBBtn
                 style={{ width: "100%", backgroundColor: Colors.primary }}
               >
-                Submit
+                {id ? "Update" : "Submit"}
               </MDBBtn>
               <MDBBtn
                 style={{ width: "100%" }}

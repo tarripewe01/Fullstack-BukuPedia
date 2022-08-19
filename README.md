@@ -22,7 +22,7 @@ Team 3:
    - [x] Redux Toolkit
    - [x] Login
    - [x] Register
-   - [] Dashboard Admin
+   - [x] Dashboard Admin
    - [x] Home Page
    - [x] Detail Page
    - [] Payment Page

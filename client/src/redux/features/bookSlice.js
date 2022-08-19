@@ -126,6 +126,24 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+    [updatedBook.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [updatedBook.fulfilled]: (state, action) => {
+      state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.books = state.books.map((item) =>
+          item._id === id ? action.payload : item
+        );
+      }
+    },
+    [updatedBook.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
   },
 });
 

@@ -24,8 +24,8 @@ const BookManage = () => {
     dispatch(getBooks());
   }, []);
 
-  const handleEdit = () => {
-    navigate("/addBook");
+  const handleEdit = (id) => {
+    navigate(`/editBook/${id}`);
   };
 
   const handleDelete = (id) => {
@@ -74,7 +74,7 @@ const BookManage = () => {
                               marginBottom: 5,
                               backgroundColor: Colors.primary,
                             }}
-                            onClick={handleEdit}
+                            onClick={() => navigate(`/editBook/${book._id}`)}
                           >
                             EDIT
                           </MDBBtn>
