@@ -68,7 +68,7 @@ const Login = () => {
                   name="email"
                   required
                   invalid="true"
-                  validation="Please provide your email"
+                  feedback="Please provide your email"
                   value={email}
                   onChange={onInputChange}
                 />
@@ -80,7 +80,7 @@ const Login = () => {
                   name="password"
                   required
                   invalid="true"
-                  validation="Please provide your password"
+                  feedback="Please provide your password"
                   value={password}
                   onChange={onInputChange}
                 />
