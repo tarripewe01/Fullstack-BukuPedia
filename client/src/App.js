@@ -4,8 +4,15 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Header } from "./components";
-import { Home, Login, Register, AddEditBook, DetailBook, Dashboard } from "./pages";
+import { Header, PrivateRoute } from "./components";
+import {
+  Home,
+  Login,
+  Register,
+  AddEditBook,
+  DetailBook,
+  Dashboard,
+} from "./pages";
 import { setUser } from "./redux/features/authSlice";
 import "./index.css";
 
@@ -28,10 +35,31 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/addBook" element={<AddEditBook />} />
-          <Route path="/editBook/:id" element={<AddEditBook />} />
+          <Route
+            path="/addBook"
+            element={
+              <PrivateRoute>
+                <AddEditBook />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editBook/:id"
+            element={
+              <PrivateRoute>
+                <AddEditBook />
+              </PrivateRoute>
+            }
+          />
           <Route path="/book/:id" element={<DetailBook />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
     </BrowserRouter>

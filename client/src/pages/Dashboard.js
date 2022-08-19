@@ -1,13 +1,8 @@
-import React, { useState } from "react";
 import {
-  MDBTabs,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsContent,
-  MDBTabsPane,
-  MDBRow,
-  MDBCol,
+  MDBCol, MDBRow, MDBTabs, MDBTabsContent, MDBTabsItem,
+  MDBTabsLink, MDBTabsPane
 } from "mdb-react-ui-kit";
+import React, { useState } from "react";
 import { BookManage } from "../components";
 
 const Dashboard = () => {

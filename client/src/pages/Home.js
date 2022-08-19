@@ -2,7 +2,7 @@
 import { MDBCol, MDBContainer, MDBRow, MDBTypography } from "mdb-react-ui-kit";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BookCard } from "../components";
+import { BookCard, Spinner,  } from "../components";
 import { getBooks } from "../redux/features/bookSlice";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <Spinner />;
   }
 
   return (
@@ -30,11 +30,8 @@ const Home = () => {
         <MDBCol>
           <MDBContainer>
             <MDBRow className="row-cols-1 row-cols-md-3 g-2">
-              {
-                books && books.map((book, index)=> (
-                  <BookCard key={index}  {...book}/>
-                ))
-}
+              {books &&
+                books.map((book, index) => <BookCard key={index} {...book} />)}
             </MDBRow>
           </MDBContainer>
         </MDBCol>
