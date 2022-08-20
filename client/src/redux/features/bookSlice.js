@@ -67,12 +67,37 @@ export const updatedBook = createAsyncThunk(
   }
 );
 
+export const searchBooks = createAsyncThunk(
+  "book/searchBooks",
+  async (searchQuery, { rejectWithValue }) => {
+    try {
+      const response = await api.getBooksBySearch(searchQuery);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
+export const getBooksByTag = createAsyncThunk(
+  "book/getBooksByTag",
+  async (tag, { rejectWithValue }) => {
+    try {
+      const response = await api.getTagBooks(tag);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const bookSlice = createSlice({
   name: "book",
   initialState: {
     book: {},
     books: [],
     userBooks: [],
+    tagBooks: [],
     error: "",
     loading: false,
   },
@@ -141,6 +166,30 @@ const bookSlice = createSlice({
       }
     },
     [updatedBook.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [searchBooks.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [searchBooks.fulfilled]: (state, action) => {
+      state.loading = false;
+      console.log(action.books)
+      state.books = action.payload;
+    },
+    [searchBooks.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+    [getBooksByTag.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getBooksByTag.fulfilled]: (state, action) => {
+      state.loading = false;
+      console.log(action.books)
+      state.tagBooks = action.payload;
+    },
+    [getBooksByTag.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

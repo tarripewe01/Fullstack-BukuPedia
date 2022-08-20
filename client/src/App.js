@@ -12,6 +12,7 @@ import {
   AddEditBook,
   DetailBook,
   Dashboard,
+  TagBooks,
 } from "./pages";
 import { setUser } from "./redux/features/authSlice";
 import "./index.css";
@@ -33,6 +34,8 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/books/search" element={<Home />} />
+          <Route path="/books/tag/:tag" element={<TagBooks />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route

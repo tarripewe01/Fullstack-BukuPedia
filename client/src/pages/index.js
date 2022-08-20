@@ -4,5 +4,6 @@ import Register from "./Register";
 import AddEditBook from "./AddEditBook";
 import DetailBook from "./DetailBook";
 import Dashboard from "./Dashboard";
+import TagBooks from "./TagBooks";
 
-export { Home, Register, Login, AddEditBook, DetailBook, Dashboard };
+export { Home, Register, Login, AddEditBook, DetailBook, Dashboard, TagBooks };

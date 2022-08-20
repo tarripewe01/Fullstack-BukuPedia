@@ -25,10 +25,11 @@ Team 3:
    - [x] Dashboard Admin
    - [x] Home Page
    - [x] Detail Page
-   - [] Payment Page
    - [] Profile Page
    - [x] Add Page
    - [] Review Feature
+   - [] Search Feature
+   - [x] Tag Feature
    - [] Live Chat Feature
 
 3. Deployment :

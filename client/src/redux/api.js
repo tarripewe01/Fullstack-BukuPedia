@@ -20,3 +20,7 @@ export const getBook = (id) => API.get(`/book/${id}`);
 export const updateBook = (updatedBookData, id) =>
   API.patch(`/book/${id}`, updatedBookData);
 export const deleteBook = (id) => API.delete(`/book/${id}`);
+
+export const getBooksBySearch = (searchQuery) =>
+  API.get(`/book/search?searchQuery=${searchQuery}`);
+export const getTagBooks = (tag) => API.get(`/book/tag/${tag}`);

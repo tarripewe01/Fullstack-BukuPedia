@@ -66,4 +66,34 @@ const deleteBook = async (req, res) => {
   }
 };
 
-module.exports = { createBook, getBooks, getBook, updateBook, deleteBook };
+const getBooksBySearch = async (req, res) => {
+  const { searchQuery } = req.query;
+  try {
+    const author = new RegExp(searchQuery, "i");
+    const books = await BookModel.findOne({ author });
+    res.json(books);
+    console.log(books, "server");
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+const getBooksByTag = async (req, res) => {
+  const { tag } = req.params;
+  try {
+    const books = await BookModel.find({ tags: { $in: tag } });
+    res.json(books);
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+module.exports = {
+  createBook,
+  getBooks,
+  getBook,
+  updateBook,
+  deleteBook,
+  getBooksBySearch,
+  getBooksByTag,
+};
