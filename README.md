@@ -27,11 +27,11 @@ Team 3:
    - [x] Detail Page
    - [] Profile Page
    - [x] Add Page
-   - [] Review Feature
+   - [x] Review Feature
    - [] Search Feature
    - [x] Tag Feature
    - [x] Related Feature
-   - [] Related Feature
+   - [x] Related Feature
    - [] Live Chat Feature
 
 3. Deployment :

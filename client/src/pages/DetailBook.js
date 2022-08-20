@@ -1,15 +1,9 @@
-import {
-  MDBCard,
-  MDBCardImage,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-} from "mdb-react-ui-kit";
+import { MDBCardImage, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
 import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { RelatedBooks } from "../components";
+import { DisqusThread, RelatedBooks } from "../components";
 import { getBook, getBooksRelated } from "../redux/features/bookSlice";
 
 const DetailBook = () => {
@@ -88,7 +82,9 @@ const DetailBook = () => {
                 </p>
               </div>
             </MDBCol>
-            <MDBCol></MDBCol>
+            <MDBCol>
+              <DisqusThread id={id} title={book.title} path={`/book/${id}`} />
+            </MDBCol>
           </MDBRow>
         </div>
         <RelatedBooks relatedBooks={relatedBooks} bookId={id} />

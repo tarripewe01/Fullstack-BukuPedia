@@ -16,6 +16,7 @@ const createBook = async (req, res) => {
 };
 
 const getBooks = async (req, res) => {
+  const { page } = req.query;
   try {
     const books = await BookModel.find();
     res.status(200).json(books);
@@ -98,6 +99,8 @@ const getRelatedBooks = async (req, res) => {
   }
 };
 
+const likeBook = async (req, res) => {};
+
 module.exports = {
   createBook,
   getBooks,
@@ -106,5 +109,6 @@ module.exports = {
   deleteBook,
   getBooksBySearch,
   getBooksByTag,
-  getRelatedBooks
+  getRelatedBooks,
+  likeBook,
 };

@@ -13,16 +13,27 @@ import {
 import { Colors } from "../utils/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../redux/features/authSlice";
+import decode from "jwt-decode";
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
   const { user } = useSelector((state) => ({ ...state.auth }));
+  const token = user?.token;
+
+  // timeout Login
+  if (token) {
+    const decodeToken = decode(token);
+    if (decodeToken.exp * 1000 < new Date().getTime()) {
+      dispatch(setLogout());
+    }
+  }
 
   const handleLogout = () => {
     dispatch(setLogout());
   };
+
   return (
     <MDBNavbar fixed="top" expand="lg" style={styles.header}>
       <MDBContainer>
@@ -45,7 +56,7 @@ const Header = () => {
                 <p className="header-text">Home</p>
               </MDBNavbarLink>
             </MDBNavbarItem>
-            {user?.result?.name ==='Admin' && (
+            {user?.result?.name === "Admin" && (
               <>
                 <MDBNavbarItem>
                   <MDBNavbarLink href="/addBook">

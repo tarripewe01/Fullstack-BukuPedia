@@ -6,6 +6,7 @@ import Spinner from "./Spinner";
 import LoadingtoRedirect from "./route/LoadingtoRedirect";
 import PrivateRoute from "./route/PrivateRoute";
 import RelatedBooks from "./RelatedBooks";
+import DisqusThread from "./DisqusThread";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   LoadingtoRedirect,
   PrivateRoute,
   RelatedBooks,
+  DisqusThread,
 };
