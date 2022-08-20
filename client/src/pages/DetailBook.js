@@ -1,15 +1,23 @@
-import { MDBCardImage, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardImage,
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+} from "mdb-react-ui-kit";
 import moment from "moment";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getBook } from "../redux/features/bookSlice";
+import { RelatedBooks } from "../components";
+import { getBook, getBooksRelated } from "../redux/features/bookSlice";
 
 const DetailBook = () => {
   const dispatch = useDispatch();
 
   const { id } = useParams();
-  const { book } = useSelector((state) => ({ ...state.book }));
+  const { book, relatedBooks } = useSelector((state) => ({ ...state.book }));
+  const tags = book?.tags;
 
   useEffect(() => {
     if (id) {
@@ -17,12 +25,16 @@ const DetailBook = () => {
     }
   }, [dispatch, id]);
 
+  useEffect(() => {
+    tags && dispatch(getBooksRelated(tags));
+  }, [dispatch, tags]);
+
   return (
     <>
       <MDBContainer>
         <div
           className="d-flex align-items-start mb-3"
-          style={{ height: "100vh", marginTop: 200 }}
+          style={{ marginTop: 200 }}
         >
           <MDBRow>
             <MDBCol>
@@ -76,9 +88,10 @@ const DetailBook = () => {
                 </p>
               </div>
             </MDBCol>
-            <MDBCol>One of three columns</MDBCol>
+            <MDBCol></MDBCol>
           </MDBRow>
         </div>
+        <RelatedBooks relatedBooks={relatedBooks} bookId={id} />
       </MDBContainer>
     </>
   );

@@ -5,6 +5,7 @@ import UserManage from "./UserManage";
 import Spinner from "./Spinner";
 import LoadingtoRedirect from "./route/LoadingtoRedirect";
 import PrivateRoute from "./route/PrivateRoute";
+import RelatedBooks from "./RelatedBooks";
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   Spinner,
   LoadingtoRedirect,
   PrivateRoute,
+  RelatedBooks,
 };

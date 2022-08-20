@@ -24,3 +24,4 @@ export const deleteBook = (id) => API.delete(`/book/${id}`);
 export const getBooksBySearch = (searchQuery) =>
   API.get(`/book/search?searchQuery=${searchQuery}`);
 export const getTagBooks = (tag) => API.get(`/book/tag/${tag}`);
+export const getRelatedBooks = (tags) => API.post(`/book/relatedBooks`, tags);

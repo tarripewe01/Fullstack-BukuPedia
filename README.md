@@ -30,6 +30,8 @@ Team 3:
    - [] Review Feature
    - [] Search Feature
    - [x] Tag Feature
+   - [x] Related Feature
+   - [] Related Feature
    - [] Live Chat Feature
 
 3. Deployment :

@@ -88,6 +88,16 @@ const getBooksByTag = async (req, res) => {
   }
 };
 
+const getRelatedBooks = async (req, res) => {
+  const tags = req.body;
+  try {
+    const books = await BookModel.find({ tags: { $in: tags } });
+    res.json(books);
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
 module.exports = {
   createBook,
   getBooks,
@@ -96,4 +106,5 @@ module.exports = {
   deleteBook,
   getBooksBySearch,
   getBooksByTag,
+  getRelatedBooks
 };

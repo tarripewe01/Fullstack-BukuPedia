@@ -91,6 +91,18 @@ export const getBooksByTag = createAsyncThunk(
   }
 );
 
+export const getBooksRelated = createAsyncThunk(
+  "book/getBooksRelated",
+  async (tags, { rejectWithValue }) => {
+    try {
+      const response = await api.getRelatedBooks(tags);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 const bookSlice = createSlice({
   name: "book",
   initialState: {
@@ -98,6 +110,7 @@ const bookSlice = createSlice({
     books: [],
     userBooks: [],
     tagBooks: [],
+    relatedBooks: [],
     error: "",
     loading: false,
   },
@@ -113,6 +126,7 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [getBooks.pending]: (state, action) => {
       state.loading = true;
     },
@@ -124,6 +138,7 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [getBook.pending]: (state, action) => {
       state.loading = true;
     },
@@ -135,6 +150,7 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [deletedBook.pending]: (state, action) => {
       state.loading = true;
     },
@@ -151,6 +167,7 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [updatedBook.pending]: (state, action) => {
       state.loading = true;
     },
@@ -169,6 +186,7 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [searchBooks.pending]: (state, action) => {
       state.loading = true;
     },
@@ -181,6 +199,7 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [getBooksByTag.pending]: (state, action) => {
       state.loading = true;
     },
@@ -190,6 +209,19 @@ const bookSlice = createSlice({
       state.tagBooks = action.payload;
     },
     [getBooksByTag.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+
+    [getBooksRelated.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getBooksRelated.fulfilled]: (state, action) => {
+      state.loading = false;
+      console.log(action.books)
+      state.relatedBooks = action.payload;
+    },
+    [getBooksRelated.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

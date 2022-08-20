@@ -9,6 +9,7 @@ const {
   deleteBook,
   getBooksBySearch,
   getBooksByTag,
+  getRelatedBooks,
 } = require("../controllers/book");
 
 router.post("/", createBook);
@@ -19,5 +20,6 @@ router.delete("/:id", deleteBook);
 
 router.get("/search", getBooksBySearch);
 router.get("/tag/:tag", getBooksByTag);
+router.post("/relatedBooks", getRelatedBooks);
 
 module.exports = router;
