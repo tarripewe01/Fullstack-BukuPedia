@@ -3,7 +3,7 @@ import {
   MDBTabsLink, MDBTabsPane
 } from "mdb-react-ui-kit";
 import React, { useState } from "react";
-import { BookManage } from "../components";
+import { BookManage, UserManage } from "../components";
 
 const Dashboard = () => {
   const [verticalActive, setVerticalActive] = useState("tab1");
@@ -31,10 +31,26 @@ const Dashboard = () => {
             </MDBTabsItem>
             <MDBTabsItem>
               <MDBTabsLink
+                onClick={() => handleVerticalClick("tab2")}
+                active={verticalActive === "tab2"}
+              >
+                Users Management
+              </MDBTabsLink>
+            </MDBTabsItem>
+            <MDBTabsItem>
+              <MDBTabsLink
                 onClick={() => handleVerticalClick("tab3")}
                 active={verticalActive === "tab3"}
               >
                 Books Management
+              </MDBTabsLink>
+            </MDBTabsItem>
+            <MDBTabsItem>
+              <MDBTabsLink
+                onClick={() => handleVerticalClick("tab4")}
+                active={verticalActive === "tab4"}
+              >
+                Chat
               </MDBTabsLink>
             </MDBTabsItem>
           </MDBTabs>
@@ -44,8 +60,14 @@ const Dashboard = () => {
             <MDBTabsPane show={verticalActive === "tab1"}>
               Home content
             </MDBTabsPane>
+            <MDBTabsPane show={verticalActive === "tab2"}>
+              <UserManage />
+            </MDBTabsPane>
             <MDBTabsPane show={verticalActive === "tab3"}>
               <BookManage />
+            </MDBTabsPane>
+            <MDBTabsPane show={verticalActive === "tab4"}>
+              Chat
             </MDBTabsPane>
           </MDBTabsContent>
         </MDBCol>

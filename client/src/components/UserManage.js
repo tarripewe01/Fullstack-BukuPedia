@@ -11,12 +11,18 @@ import {
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "../utils/colors";
+import { useEffect } from 'react';
+import { getUsers } from '../redux/features/authSlice';
 
 const UserManage = () => {
   const dispatch = useDispatch();
 
   const { users } = useSelector((state) => ({ ...state.auth }));
-  console.log(users);
+  
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [])
+  
 
   return (
     <>

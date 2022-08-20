@@ -30,11 +30,24 @@ export const register = createAsyncThunk(
   }
 );
 
+export const getUsers = createAsyncThunk(
+  "book/getUsers",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.getAllUsers();
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 // Reducers
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
+    users: [],
     error: "",
     loading: false,
   },
@@ -60,6 +73,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = action.payload.message;
     },
+
     [register.pending]: (state, action) => {
       state.loading = true;
     },
@@ -69,6 +83,18 @@ const authSlice = createSlice({
       state.user = action.payload;
     },
     [register.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+
+    [getUsers.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getUsers.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.users = action.payload;
+    },
+    [getUsers.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

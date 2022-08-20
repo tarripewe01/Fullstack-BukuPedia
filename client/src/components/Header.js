@@ -70,6 +70,15 @@ const Header = () => {
                 </MDBNavbarItem>
               </>
             )}
+            {user?.result?.name !== "Admin" && user?.result?._id && (
+              <>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/chat">
+                    <p className="header-text">Chat Admin</p>
+                  </MDBNavbarLink>
+                </MDBNavbarItem>
+              </>
+            )}
             {user?.result?._id && (
               <h5 style={styles.navbar}>Hi, {user?.result?.name}</h5>
             )}

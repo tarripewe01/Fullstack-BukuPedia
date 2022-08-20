@@ -192,7 +192,6 @@ const bookSlice = createSlice({
     },
     [searchBooks.fulfilled]: (state, action) => {
       state.loading = false;
-      console.log(action.books)
       state.books = action.payload;
     },
     [searchBooks.rejected]: (state, action) => {

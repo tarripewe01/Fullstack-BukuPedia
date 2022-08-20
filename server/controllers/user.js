@@ -65,4 +65,13 @@ const signin = async (req, res) => {
   }
 };
 
-module.exports = { signup, signin };
+const getUsers = async (req, res) => {
+  try {
+    const users= await BookModel.findById();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+module.exports = { signup, signin, getUsers };

@@ -13,6 +13,7 @@ import {
   DetailBook,
   Dashboard,
   TagBooks,
+  Chat,
 } from "./pages";
 import { setUser } from "./redux/features/authSlice";
 import "./index.css";
@@ -60,6 +61,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <PrivateRoute>
+                <Chat />
               </PrivateRoute>
             }
           />
