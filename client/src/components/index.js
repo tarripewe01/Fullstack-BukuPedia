@@ -7,6 +7,7 @@ import LoadingtoRedirect from "./route/LoadingtoRedirect";
 import PrivateRoute from "./route/PrivateRoute";
 import RelatedBooks from "./RelatedBooks";
 import DisqusThread from "./DisqusThread";
+import Footer from "./Footer";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   PrivateRoute,
   RelatedBooks,
   DisqusThread,
+  Footer,
 };

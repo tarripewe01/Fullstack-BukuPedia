@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Header, PrivateRoute } from "./components";
+import { Footer, Header, PrivateRoute } from "./components";
 import {
   Home,
   Login,
@@ -74,6 +74,7 @@ function App() {
           />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

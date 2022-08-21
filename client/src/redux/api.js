@@ -13,7 +13,6 @@ API.interceptors.request.use((req) => {
 
 export const signIn = (formData) => API.post("/users/signin", formData);
 export const signUp = (formData) => API.post("/users/signup", formData);
-
 export const getAllUsers = () => API.get("/users/users");
 export const deleteUser = (id) => API.delete(`/users/users/${id}`);
 

@@ -31,8 +31,8 @@ const UserManage = () => {
   };
 
   return (
-    <>
-      <MDBTable striped hover>
+    <div style={{height: '100vh'}}>
+      <MDBTable striped hover >
         {" "}
         <MDBTableHead>
           <tr>
@@ -82,7 +82,7 @@ const UserManage = () => {
             })}
         </MDBTableBody>
       </MDBTable>
-    </>
+    </div>
   );
 };
 
