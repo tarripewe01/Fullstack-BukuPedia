@@ -24,10 +24,6 @@ const BookManage = () => {
     dispatch(getBooks());
   }, []);
 
-  const handleEdit = (id) => {
-    navigate(`/editBook/${id}`);
-  };
-
   const handleDelete = (id) => {
     if (window.confirm("Are you sure want to delete this book ?"))
       dispatch(deletedBook({ id, toast }));
@@ -42,6 +38,14 @@ const BookManage = () => {
 
   return (
     <>
+      <div style={{ float: "right" }}>
+        <MDBBtn
+          onClick={() => navigate("/addBook")}
+          style={{ background: Colors.primary }}
+        >
+          Create
+        </MDBBtn>
+      </div>
       <MDBTable striped hover>
         {" "}
         <MDBTableHead>
@@ -72,7 +76,7 @@ const BookManage = () => {
                             style={{
                               width: 90,
                               marginBottom: 5,
-                              backgroundColor: Colors.primary,
+                              backgroundColor: Colors.softGreen,
                             }}
                             onClick={() => navigate(`/editBook/${book._id}`)}
                           >
@@ -82,7 +86,7 @@ const BookManage = () => {
                         <MDBCol>
                           <MDBBtn
                             onClick={() => handleDelete(book._id)}
-                            style={{ backgroundColor: Colors.danger }}
+                            style={{ backgroundColor: Colors.softRed }}
                           >
                             DELETE
                           </MDBBtn>

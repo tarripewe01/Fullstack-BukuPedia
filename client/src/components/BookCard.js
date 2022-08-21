@@ -31,8 +31,10 @@ const BookCard = ({ imageFile, title, author, description, tags, _id }) => {
         <MDBCardBody>
           <h6 className="text-center">{title}</h6>
           <span className="text-start tag-card">
-            {tags.map((tag) => (
-              <Link to={`/books/tag/${tag}`}>#{tag}</Link>
+            {tags.map((tag, idx) => (
+              <Link key={idx} to={`/books/tag/${tag}`}>
+                #{tag}
+              </Link>
             ))}
           </span>
         </MDBCardBody>

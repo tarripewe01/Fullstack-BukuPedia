@@ -1,11 +1,20 @@
 import {
-  MDBCol, MDBRow, MDBTabs, MDBTabsContent, MDBTabsItem,
-  MDBTabsLink, MDBTabsPane
+  MDBCol,
+  MDBRow,
+  MDBTabs,
+  MDBTabsContent,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsPane,
 } from "mdb-react-ui-kit";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { BookManage, UserManage } from "../components";
+import { setLogout } from "../redux/features/authSlice";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+
   const [verticalActive, setVerticalActive] = useState("tab1");
 
   const handleVerticalClick = (value) => {
@@ -21,12 +30,21 @@ const Dashboard = () => {
       <MDBRow>
         <MDBCol size="2">
           <MDBTabs className="flex-column text-center">
-            <MDBTabsItem>
+            {/* <MDBTabsItem>
               <MDBTabsLink
                 onClick={() => handleVerticalClick("tab1")}
                 active={verticalActive === "tab1"}
               >
                 Dashboard
+              </MDBTabsLink>
+            </MDBTabsItem> */}
+
+            <MDBTabsItem>
+              <MDBTabsLink
+                onClick={() => handleVerticalClick("tab1")}
+                active={verticalActive === "tab1"}
+              >
+                Books Management
               </MDBTabsLink>
             </MDBTabsItem>
             <MDBTabsItem>
@@ -42,14 +60,6 @@ const Dashboard = () => {
                 onClick={() => handleVerticalClick("tab3")}
                 active={verticalActive === "tab3"}
               >
-                Books Management
-              </MDBTabsLink>
-            </MDBTabsItem>
-            <MDBTabsItem>
-              <MDBTabsLink
-                onClick={() => handleVerticalClick("tab4")}
-                active={verticalActive === "tab4"}
-              >
                 Chat
               </MDBTabsLink>
             </MDBTabsItem>
@@ -57,18 +67,16 @@ const Dashboard = () => {
         </MDBCol>
         <MDBCol>
           <MDBTabsContent>
-            <MDBTabsPane show={verticalActive === "tab1"}>
+            {/* <MDBTabsPane show={verticalActive === "tab1"}>
               Home content
+            </MDBTabsPane> */}
+            <MDBTabsPane show={verticalActive === "tab1"}>
+              <BookManage />
             </MDBTabsPane>
             <MDBTabsPane show={verticalActive === "tab2"}>
               <UserManage />
             </MDBTabsPane>
-            <MDBTabsPane show={verticalActive === "tab3"}>
-              <BookManage />
-            </MDBTabsPane>
-            <MDBTabsPane show={verticalActive === "tab4"}>
-              Chat
-            </MDBTabsPane>
+            <MDBTabsPane show={verticalActive === "tab3"}>Chat</MDBTabsPane>
           </MDBTabsContent>
         </MDBCol>
       </MDBRow>

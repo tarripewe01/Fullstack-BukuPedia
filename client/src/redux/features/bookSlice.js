@@ -8,7 +8,7 @@ export const createBook = createAsyncThunk(
     try {
       const response = await api.createBook(updatedBookData);
       toast.success("Book Added Successfully");
-      navigate("/");
+      navigate("/dashboard");
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
