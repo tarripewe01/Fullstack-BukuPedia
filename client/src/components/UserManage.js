@@ -11,18 +11,18 @@ import {
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "../utils/colors";
-import { useEffect } from 'react';
-import { getUsers } from '../redux/features/authSlice';
+import { useEffect } from "react";
+import { getUsers } from "../redux/features/authSlice";
+import { excerpt } from "../utils/excerpt";
 
 const UserManage = () => {
   const dispatch = useDispatch();
 
   const { users } = useSelector((state) => ({ ...state.auth }));
-  
+
   useEffect(() => {
-    dispatch(getUsers())
-  }, [])
-  
+    dispatch(getUsers());
+  }, []);
 
   return (
     <>
@@ -42,26 +42,26 @@ const UserManage = () => {
             users.map((user, idx) => {
               return (
                 <>
-                  <tr className="text-start">
+                  <tr className="text-center">
                     <th scope="row">{idx + 1}</th>
-                    <td>{user._id}</td>
+                    <td>_{excerpt(user._id, 15)}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>
                       <MDBRow>
-                        <MDBCol>
+                        {/* <MDBCol>
                           <MDBBtn
                             style={{
                               width: 90,
                               marginBottom: 5,
-                              backgroundColor: Colors.primary,
+                              backgroundColor: Colors.softGreen,
                             }}
                           >
                             EDIT
                           </MDBBtn>
-                        </MDBCol>
+                        </MDBCol> */}
                         <MDBCol>
-                          <MDBBtn style={{ backgroundColor: Colors.danger }}>
+                          <MDBBtn style={{ backgroundColor: Colors.softRed }}>
                             DELETE
                           </MDBBtn>
                         </MDBCol>

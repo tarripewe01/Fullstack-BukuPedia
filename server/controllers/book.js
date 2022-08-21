@@ -16,7 +16,6 @@ const createBook = async (req, res) => {
 };
 
 const getBooks = async (req, res) => {
-  const { page } = req.query;
   try {
     const books = await BookModel.find();
     res.status(200).json(books);
@@ -68,12 +67,16 @@ const deleteBook = async (req, res) => {
 };
 
 const getBooksBySearch = async (req, res) => {
+  // var response = [];
+  // if (req.query.author) {
+  //   response = await BookModel.find({ author: req.query.author });
+  // }
+  // res.json(response);
   const { searchQuery } = req.query;
   try {
-    const author = new RegExp(searchQuery, "i");
-    const books = await BookModel.findOne({ author });
+    // const author = new RegExp(searchQuery, "i");
+    const books = await BookModel.find({ searchQuery });
     res.json(books);
-    console.log(books, "server");
   } catch (error) {
     res.status(404).json({ message: "Something went wrong" });
   }
