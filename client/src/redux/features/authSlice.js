@@ -42,6 +42,19 @@ export const getUsers = createAsyncThunk(
   }
 );
 
+export const deleteUser = createAsyncThunk(
+  "book/deleteUser",
+  async ({ id, toast }, { rejectWithValue }) => {
+    try {
+      const response = await api.deleteUser(id);
+      toast.success("User Deleted Succesfully");
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 // Reducers
 const authSlice = createSlice({
   name: "auth",
@@ -95,6 +108,23 @@ const authSlice = createSlice({
       state.users = action.payload;
     },
     [getUsers.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+
+    [deleteUser.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [deleteUser.fulfilled]: (state, action) => {
+      state.loading = false;
+      const {
+        arg: { id },
+      } = action.meta;
+      if (id) {
+        state.users = state.users.filter((item) => item._id !== id);
+      }
+    },
+    [deleteUser.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.payload.message;
     },

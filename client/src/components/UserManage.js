@@ -12,8 +12,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "../utils/colors";
 import { useEffect } from "react";
-import { getUsers } from "../redux/features/authSlice";
+import { deleteUser, getUsers } from "../redux/features/authSlice";
 import { excerpt } from "../utils/excerpt";
+import { toast } from "react-toastify";
 
 const UserManage = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,11 @@ const UserManage = () => {
   useEffect(() => {
     dispatch(getUsers());
   }, []);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure want to delete this user ?"))
+      dispatch(deleteUser({ id, toast }));
+  };
 
   return (
     <>
@@ -42,7 +48,7 @@ const UserManage = () => {
             users.map((user, idx) => {
               return (
                 <>
-                  <tr className="text-center">
+                  <tr key={idx} className="text-center">
                     <th scope="row">{idx + 1}</th>
                     <td>_{excerpt(user._id, 15)}</td>
                     <td>{user.name}</td>
@@ -61,7 +67,10 @@ const UserManage = () => {
                           </MDBBtn>
                         </MDBCol> */}
                         <MDBCol>
-                          <MDBBtn style={{ backgroundColor: Colors.softRed }}>
+                          <MDBBtn
+                            onClick={() => handleDelete(user._id)}
+                            style={{ backgroundColor: Colors.softRed }}
+                          >
                             DELETE
                           </MDBBtn>
                         </MDBCol>

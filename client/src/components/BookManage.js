@@ -63,7 +63,7 @@ const BookManage = () => {
             books.map((book, idx) => {
               return (
                 <>
-                  <tr className="text-start">
+                  <tr key={idx} className="text-start">
                     <th scope="row">{idx + 1}</th>
                     <td>{book.author}</td>
                     <td>{book.title}</td>

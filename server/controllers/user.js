@@ -74,4 +74,14 @@ const getUsers = async (req, res) => {
   }
 };
 
-module.exports = { signup, signin, getUsers };
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await UserModel.findByIdAndRemove(id);
+    res.json({ message: "User Deleted Successfulyy" });
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+
+module.exports = { signup, signin, getUsers, deleteUser };
