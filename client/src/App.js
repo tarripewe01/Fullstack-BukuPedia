@@ -13,19 +13,42 @@ import {
   DetailBook,
   Dashboard,
   TagBooks,
-  Chat,
 } from "./pages";
+import Chat from "./pages/Chat"
+import ChatroomsPage from "./pages/Chatrooms";
 import { setUser } from "./redux/features/authSlice";
 import "./index.css";
 
 function App() {
   const dispatch = useDispatch();
+  const setupSocket = () => {
+    const token = localStorage.getItem("CC_Token");
+    if (token && !socket) {
+      const newSocket = io("http://localhost:8000", {
+        query: {
+          token: localStorage.getItem("CC_Token"),
+        },
+      });
+
+      newSocket.on("disconnect", () => {
+        setSocket(null);
+        setTimeout(setupSocket, 3000);
+        makeToast("error", "Socket Disconnected!");
+      });
+
+      newSocket.on("connect", () => {
+        makeToast("success", "Socket Connected!");
+      });
+
+      setSocket(newSocket);
+    }
+  };
 
   // ambil data dari localstorage
   const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
-    dispatch(setUser(user));
+    dispatch(setUser(user)), setupSocket();
   }, []);
 
   return (
@@ -65,10 +88,10 @@ function App() {
             }
           />
           <Route
-            path="/chat"
+            path="/chatroom"
             element={
               <PrivateRoute>
-                <Chat />
+                <ChatroomsPage />
               </PrivateRoute>
             }
           />
