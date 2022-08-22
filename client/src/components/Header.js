@@ -60,7 +60,7 @@ const Header = () => {
               <>
                 {/* <MDBNavbarItem>
                   <MDBNavbarLink href="/addBook">
-                    <p className="header-text">Add Book</p>
+                    <p className="header-text">Chat Admin</p>
                   </MDBNavbarLink>
                 </MDBNavbarItem> */}
                 <MDBNavbarItem>

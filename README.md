@@ -15,7 +15,7 @@ Team 3:
    - [x] HTTP protocol method POST
    - [x] HTTP protocol method PUT
    - [x] HTTP protocol method DELETE
-   - [] Add a real-time feature using Websocket
+   - [X] Add a real-time feature using Websocket
 
 2. Client :
 
@@ -25,7 +25,6 @@ Team 3:
    - [x] Dashboard Admin
    - [x] Home Page
    - [x] Detail Page
-   - [] Profile Page
    - [x] Add Page
    - [x] Review Feature
    - [] Search Feature

@@ -1,7 +1,15 @@
 import React from "react";
+import './chat.css'
 
 const Chat = () => {
-  return <div>Chat</div>;
+  return <div className="Chat">
+    <div className="Left-side-chat">
+      <h2>Chats</h2>
+    </div>
+    <div className="Right-side-chat">
+      <h2>Chats</h2>
+    </div>
+  </div>;
 };
 
 export default Chat;
