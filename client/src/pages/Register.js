@@ -154,6 +154,7 @@ const styles = {
     maxWidth: "450px",
     alignContent: "center",
     marginTop: "240px",
+    height: '100vh'
   },
   iconUser: { color: Colors.primary, marginTop: 20, marginBottom: 10 },
   btnLogin: { width: "100%", background: Colors.primary },
