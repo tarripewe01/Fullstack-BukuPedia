@@ -6,6 +6,7 @@ require("dotenv").config();
 
 const userRouter = require("./routes/user");
 const bookRouter = require("./routes/book");
+const chatRouter = require("./routes/chat");
 
 const app = express();
 const port = process.env.PORT;
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 // API
 app.use("/users", userRouter);
 app.use("/book", bookRouter);
+app.use("/chat", chatRouter);
 
 // Connect Monggo.DB
 mongoose

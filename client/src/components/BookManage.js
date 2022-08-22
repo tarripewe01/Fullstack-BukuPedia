@@ -29,12 +29,12 @@ const BookManage = () => {
       dispatch(deletedBook({ id, toast }));
   };
 
-  const excerpt = (str) => {
-    if (str.length > 85) {
-      str = str.substring(0, 85) + "...";
-    }
-    return str;
-  };
+  // const excerpt = (str) => {
+  //   if (str.length > 85) {
+  //     str = str.substring(0, 85) + "...";
+  //   }
+  //   return str;
+  // };
 
   return (
     <>
@@ -67,7 +67,7 @@ const BookManage = () => {
                     <th scope="row">{idx + 1}</th>
                     <td>{book.author}</td>
                     <td>{book.title}</td>
-                    <td>{excerpt(book.description)}</td>
+                    <td>{book.description}</td>
                     <td>{book.publisher}</td>
                     <td>
                       <MDBRow>
