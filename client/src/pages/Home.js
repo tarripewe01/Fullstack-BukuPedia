@@ -44,7 +44,7 @@ const Home = () => {
     e.preventDefault();
     if (search) {
       dispatch(searchBooks(search));
-      navigate(`/books/search?searchQuery=${search}`);
+      // navigate(`/books/search?searchQuery=${search}`);
     } else {
       navigate("/");
     }
