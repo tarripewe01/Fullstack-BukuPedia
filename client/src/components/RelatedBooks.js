@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import {
   MDBCard,
   MDBCardBody,
