@@ -10,7 +10,7 @@ const chatRouter = require("./routes/chat");
 const messagesRouter = require("./routes/messages");
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 const MONGGODB_URL = process.env.REACT_APP_MONGODB_CONNECT;
 
 app.use(cors());
@@ -23,11 +23,16 @@ app.use("/users", userRouter);
 app.use("/book", bookRouter);
 app.use("/chat", chatRouter);
 app.use("/messages", messagesRouter);
+app.get("/", (req, res) => {
+  res.send("Welcome to BukuPedia API");
+});
 
 // Connect Monggo.DB
 mongoose
   .connect(MONGGODB_URL)
   .then(() => {
-    app.listen(port, () => console.log(`Server running on port ${port}`));
+    app.listen(port, () =>
+      console.log(`Server running on port ${port}`)
+    );
   })
   .catch((error) => console.log(`${error} did not match`));
