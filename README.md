@@ -34,4 +34,5 @@ Team 3:
    - [] Live Chat Feature
 
 3. Deployment :
-   - [] Heroku
+   - [x] Heroku ==> api-bukupedia.herokuapp.com
+   - [] Netlify ==> 
