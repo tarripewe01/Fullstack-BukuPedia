@@ -35,4 +35,4 @@ Team 3:
 
 3. Deployment :
    - [x] Heroku ==> https://api-bukupedia.herokuapp.com/book
-   - [x] Netlify ==> https://bukupedia.netlify.app
+   - [x] Netlify ==> bukupedia-front.netlify.app
